@@ -4,8 +4,17 @@ using System.Linq;
 
 namespace StarportHelperClasses
 {
+    /// <summary>
+    /// I'm Helping!
+    /// </summary>
     public static class Helper
     {
+        /// <summary>
+        /// Finds out if the planet type is zoundsable
+        /// </summary>
+        /// <param name="planetType"></param>
+        /// <param name="research"></param>
+        /// <returns>true/false</returns>
         public static bool IsZoundsable(string planetType, string research)
         {
             string[] arch2Up = new string[] { "Arch lvl 2", "Arch lvl 3", "Arch lvl 4", "Arch lvl 5" };
