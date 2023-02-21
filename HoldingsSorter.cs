@@ -33,7 +33,7 @@ namespace StarportHelperClasses
             KeyValuePair<double, int> smallestDistance = new KeyValuePair<double, int>();
             for (int i = 0; i < lookIn.Count; i++)
             {
-                double distance = System.Math.Sqrt(System.Math.Pow(origin.galaxyX - lookIn[i].galaxyX, 2) + System.Math.Pow(origin.galaxyY - lookIn[i].galaxyY, 2));
+                double distance = System.Math.Sqrt(System.Math.Pow(origin.GalaxyX - lookIn[i].GalaxyX, 2) + System.Math.Pow(origin.GalaxyY - lookIn[i].GalaxyY, 2));
                 if (i == 0)
                 {
                     smallestDistance = new KeyValuePair<double, int>(distance, i);

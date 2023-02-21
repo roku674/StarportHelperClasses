@@ -27,7 +27,7 @@ namespace StarportBuilderBot.Models
                 {
                     if (i == 0)
                     {
-                        colony.colonyName = line;
+                        colony.ColonyName = line;
                         Console.WriteLine(line);
                     }
                     else if (i == 1)
@@ -43,7 +43,7 @@ namespace StarportBuilderBot.Models
                     {
                         line = line.Replace("Planet Type:", "");
                         line = line.Trim();
-                        colony.planetType = line;
+                        colony.PlanetType = line;
                     }
                     else if (i == 4)
                     {
@@ -51,32 +51,32 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split("(");
                         line = temp[0];
                         line = line.Trim();
-                        colony.planetName = line;
-                        Console.WriteLine(colony.planetName);
+                        colony.PlanetName = line;
+                        Console.WriteLine(colony.PlanetName);
 
                         temp[1] = temp[1].Trim();
-                        colony.coordinates = temp[i];
+                        colony.Coordinates = temp[i];
                     }
                     else if (i == 5)
                     {
                         line = line.Replace("Owner:", "");
                         line = line.Trim();
 
-                        colony.owner = line;
+                        colony.Owner = line;
                     }
                     else if (i == 6)
                     {
                         line = line.Replace("Corporation:", "");
                         line = line.Trim();
 
-                        colony.corporation = line;
+                        colony.Corporation = line;
                     }
                     else if (i == 7)
                     {
                         line = line.Replace("Founded:", "");
                         line = line.Trim();
 
-                        colony.founded = line;
+                        colony.Founded = line;
                     }
                     else if (i == 8)
                     {
@@ -86,7 +86,7 @@ namespace StarportBuilderBot.Models
                         temp[0] = StringManipulation.RemoveParenthesisColonComma(temp[0]);
                         Console.WriteLine(temp[0]);
 
-                        colony.biodome.population = uint.Parse(temp[0]);
+                        colony.Biodome.Population = uint.Parse(temp[0]);
                     }
                     else if (i == 9)
                     {
@@ -96,15 +96,15 @@ namespace StarportBuilderBot.Models
                         temp = line.Split(" ");
 
                         Console.WriteLine(line);
-                        colony.biodome.moraleWord = temp[0];
-                        colony.biodome.morale = int.Parse(temp[1]);
+                        colony.Biodome.MoraleWord = temp[0];
+                        colony.Biodome.Morale = int.Parse(temp[1]);
                     }
                     else if (i == 10)
                     {
                         line = line.Replace("Government:", "");
                         line = line.Trim();
-                        colony.biodome.government = Regex.Replace(line, " ", "");
-                        Console.WriteLine(colony.biodome.government);
+                        colony.Biodome.Government = Regex.Replace(line, " ", "");
+                        Console.WriteLine(colony.Biodome.Government);
                     }
                     else if (i == 11)
                     {
@@ -115,14 +115,14 @@ namespace StarportBuilderBot.Models
 
                         temp[0] = StringManipulation.RemoveParenthesisColonComma(temp[0]);
                         temp[0] = Regex.Replace(temp[0], " ", "");
-                        colony.biodome.treasury = uint.Parse(temp[0]);
+                        colony.Biodome.Treasury = uint.Parse(temp[0]);
 
                         temp[1] = StringManipulation.RemoveParenthesisColonComma(temp[1]);
                         temp[1] = Regex.Replace(temp[1], "[A-Za-z ]", "");
                         if (temp[1].Equals(null) || temp[1].Equals("")) { }
                         else
                         {
-                            colony.biodome.hourlyIncome = uint.Parse(temp[1]);
+                            colony.Biodome.HourlyIncome = uint.Parse(temp[1]);
                         }
 
                         Console.WriteLine(temp[0] + " " + temp[1] + "/hr");
@@ -134,24 +134,24 @@ namespace StarportBuilderBot.Models
 
                         string[] temp = line.Split('(');
                         temp[0] = temp[0].Replace("%", "");
-                        colony.biodome.currentPollution = uint.Parse(temp[0]);
+                        colony.Biodome.CurrentPollution = uint.Parse(temp[0]);
 
                         if (temp.Length > 2)
                         {
                             string trim = StringManipulation.RemoveParenthesisColonComma(temp[1]);
-                            colony.biodome.disasters = uint.Parse(trim);
-                            colony.biodome.pollutionRate = temp[2];
+                            colony.Biodome.Disasters = uint.Parse(trim);
+                            colony.Biodome.PollutionRate = temp[2];
                         }
                         else
                         {
-                            colony.biodome.pollutionRate = temp[1];
+                            colony.Biodome.PollutionRate = temp[1];
                         }
-                        colony.biodome.pollutionRate = Regex.Replace(colony.biodome.pollutionRate, "[A-Za-z ]", "");
-                        colony.biodome.pollutionRate = StringManipulation.RemoveParenthesisColonComma(colony.biodome.pollutionRate);
-                        colony.biodome.pollutionRate = StringManipulation.RemoveSlashes(colony.biodome.pollutionRate);
+                        colony.Biodome.PollutionRate = Regex.Replace(colony.Biodome.PollutionRate, "[A-Za-z ]", "");
+                        colony.Biodome.PollutionRate = StringManipulation.RemoveParenthesisColonComma(colony.Biodome.PollutionRate);
+                        colony.Biodome.PollutionRate = StringManipulation.RemoveSlashes(colony.Biodome.PollutionRate);
 
-                        Console.WriteLine(colony.biodome.currentPollution + " " + colony.biodome.disasters);
-                        Console.WriteLine(colony.biodome.pollutionRate);
+                        Console.WriteLine(colony.Biodome.CurrentPollution + " " + colony.Biodome.Disasters);
+                        Console.WriteLine(colony.Biodome.PollutionRate);
                     }
                     else if (i == 15)
                     {
@@ -163,7 +163,7 @@ namespace StarportBuilderBot.Models
                         Console.WriteLine(line);
                         line = Regex.Replace(line, " ", "");
                         line = line.Replace("%", "");
-                        colony.biodome.allocationConstruction = uint.Parse(line);
+                        colony.Biodome.AllocationConstruction = uint.Parse(line);
                     }
                     else if (i == 16)
                     {
@@ -176,7 +176,7 @@ namespace StarportBuilderBot.Models
                         Console.WriteLine(line);
                         line = Regex.Replace(line, " ", "");
                         line = line.Replace("%", "");
-                        colony.biodome.allocationResearch = uint.Parse(line);
+                        colony.Biodome.AllocationResearch = uint.Parse(line);
                     }
                     else if (i == 17)
                     {
@@ -188,7 +188,7 @@ namespace StarportBuilderBot.Models
                         Console.WriteLine(line);
                         line = Regex.Replace(line, " ", "");
                         line = line.Replace("%", "");
-                        colony.biodome.allocationMilitary = uint.Parse(line);
+                        colony.Biodome.AllocationMilitary = uint.Parse(line);
                     }
                     else if (i == 18)
                     {
@@ -200,15 +200,15 @@ namespace StarportBuilderBot.Models
 
                         Console.WriteLine(line);
                         line = Regex.Replace(line, " ", "");
-                        colony.biodome.allocationHarvesting = uint.Parse(line);
+                        colony.Biodome.AllocationHarvesting = uint.Parse(line);
                     }
                     else if (i == 20)
                     {
                         line = line.Replace("Building:", "");
                         line = line.Trim();
 
-                        colony.biodome.currentlyConstructing = line;
-                        Console.WriteLine(colony.biodome.currentlyConstructing);
+                        colony.Biodome.CurrentlyConstructing = line;
+                        Console.WriteLine(colony.Biodome.CurrentlyConstructing);
                     }
                     else if (i == 30)
                     {
@@ -216,8 +216,8 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split(':');
                         temp[1] = Regex.Replace(temp[1], "[A-Za-z ]", "");
                         temp[2] = Regex.Replace(temp[2], " ", "");
-                        colony.refinery.resourcesInRefinery.metal = uint.Parse(temp[1]);
-                        colony.refinery.resourcesInRefinery.anaerobes = uint.Parse(temp[2]);
+                        colony.Refinery.resourcesInRefinery.Metal = uint.Parse(temp[1]);
+                        colony.Refinery.resourcesInRefinery.Anaerobes = uint.Parse(temp[2]);
                         Console.WriteLine(temp[1] + '\n' + temp[2]);
                     }
                     else if (i == 31)
@@ -226,8 +226,8 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split(':');
                         temp[1] = Regex.Replace(temp[1], "[A-Za-z ]", "");
                         temp[2] = Regex.Replace(temp[2], " ", "");
-                        colony.refinery.resourcesInRefinery.medicine = uint.Parse(temp[1]);
-                        colony.refinery.resourcesInRefinery.organics = uint.Parse(temp[2]);
+                        colony.Refinery.resourcesInRefinery.Medicine = uint.Parse(temp[1]);
+                        colony.Refinery.resourcesInRefinery.Organics = uint.Parse(temp[2]);
                         Console.WriteLine(temp[1] + '\n' + temp[2]);
                     }
                     else if (i == 32)
@@ -236,8 +236,8 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split(':');
                         temp[1] = Regex.Replace(temp[1], "[A-Za-z ]", "");
                         temp[2] = Regex.Replace(temp[2], " ", "");
-                        colony.refinery.resourcesInRefinery.oil = uint.Parse(temp[1]);
-                        colony.refinery.resourcesInRefinery.uranium = uint.Parse(temp[2]);
+                        colony.Refinery.resourcesInRefinery.Oil = uint.Parse(temp[1]);
+                        colony.Refinery.resourcesInRefinery.Uranium = uint.Parse(temp[2]);
                         Console.WriteLine(temp[1] + '\n' + temp[2]);
                     }
                     else if (i == 33)
@@ -246,8 +246,8 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split(':');
                         temp[1] = Regex.Replace(temp[1], "[A-Za-z ]", "");
                         temp[2] = Regex.Replace(temp[2], " ", "");
-                        colony.refinery.resourcesInRefinery.equipment = uint.Parse(temp[1]);
-                        colony.refinery.resourcesInRefinery.spice = uint.Parse(temp[2]);
+                        colony.Refinery.resourcesInRefinery.Equipment = uint.Parse(temp[1]);
+                        colony.Refinery.resourcesInRefinery.Spice = uint.Parse(temp[2]);
                         Console.WriteLine(temp[1] + '\n' + temp[2]);
                     }
                     else if (i == 36)
@@ -271,14 +271,14 @@ namespace StarportBuilderBot.Models
                                             temp[1] = "0";
                                         }
 
-                                        colony.solar.solarShots = uint.Parse(temp[0]);
-                                        colony.solar.solarRate = uint.Parse(temp[1]);
+                                        colony.Solar.SolarShots = uint.Parse(temp[0]);
+                                        colony.Solar.SolarRate = uint.Parse(temp[1]);
                                         Console.WriteLine(temp[0] + '\n' + temp[1]);
                                     }
                                     line = reader.ReadLine();
                                     if (j >= 39 && j <= 50)
                                     {
-                                        colony.biodome.discoveries = colony.biodome.discoveries + '\n' + line;
+                                        colony.Biodome.Discoveries = colony.Biodome.Discoveries + '\n' + line;
                                     }
                                 }
                             }
@@ -290,7 +290,7 @@ namespace StarportBuilderBot.Models
                             //nukes
                             string[] temp = line.Split(':');
                             temp[1] = Regex.Replace(temp[1], " ", "");
-                            colony.weaponsFactory.nukes = uint.Parse(temp[1]);
+                            colony.WeaponsFactory.Nukes = uint.Parse(temp[1]);
                             Console.WriteLine(temp[1]);
                         }
                     }
@@ -300,7 +300,7 @@ namespace StarportBuilderBot.Models
                         line = line.Replace("Negotiators:", "");
                         line = line.Trim();
 
-                        colony.weaponsFactory.negotiators = uint.Parse(line);
+                        colony.WeaponsFactory.Negotiators = uint.Parse(line);
                     }
                     else if (i == 38)
                     {
@@ -308,7 +308,7 @@ namespace StarportBuilderBot.Models
                         line = line.Replace("Mines:", "");
                         line = line.Trim();
 
-                        colony.weaponsFactory.mines = uint.Parse(line);
+                        colony.WeaponsFactory.Mines = uint.Parse(line);
                     }
                     else if (i == 39)
                     {
@@ -316,7 +316,7 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split(':');
                         temp[1] = Regex.Replace(temp[1], " ", "");
 
-                        colony.weaponsFactory.compoundMines = uint.Parse(temp[1]);
+                        colony.WeaponsFactory.CompoundMines = uint.Parse(temp[1]);
                         Console.WriteLine(temp[1]);
                     }
                     else if (i == 40)
@@ -325,7 +325,7 @@ namespace StarportBuilderBot.Models
                         line = line.Replace("Flak Cannons:", "");
                         line = line.Trim();
 
-                        colony.weaponsFactory.flakCannons = uint.Parse(line);
+                        colony.WeaponsFactory.FlakCannons = uint.Parse(line);
                     }
                     else if (i == 41)
                     {
@@ -333,7 +333,7 @@ namespace StarportBuilderBot.Models
                         string[] temp = line.Split(':');
                         temp[1] = Regex.Replace(temp[1], " ", "");
 
-                        colony.weaponsFactory.laserCannons = uint.Parse(temp[1]);
+                        colony.WeaponsFactory.LaserCannons = uint.Parse(temp[1]);
                         Console.WriteLine(temp[1]);
                     }
                     else if (i == 42)
@@ -342,7 +342,7 @@ namespace StarportBuilderBot.Models
                         line = line.Replace("Shields:", "");
                         line = line.Trim();
 
-                        colony.weaponsFactory.shields = uint.Parse(line);
+                        colony.WeaponsFactory.Shields = uint.Parse(line);
                     }
                     else if (i == 46)
                     {
@@ -354,13 +354,13 @@ namespace StarportBuilderBot.Models
                         temp[1] = Regex.Replace(temp[1], "[A-Za-z ]", "");
                         temp[1] = StringManipulation.RemoveParenthesisColonComma(temp[1]);
 
-                        colony.solar.solarShots = uint.Parse(temp[0]);
-                        colony.solar.solarRate = uint.Parse(temp[1]);
+                        colony.Solar.SolarShots = uint.Parse(temp[0]);
+                        colony.Solar.SolarRate = uint.Parse(temp[1]);
                         Console.WriteLine(temp[0] + '\n' + temp[1]);
                     }
                     else if (i >= 48 && i <= 59)
                     {
-                        colony.biodome.discoveries = colony.biodome.discoveries + '\n' + line;
+                        colony.Biodome.Discoveries = colony.Biodome.Discoveries + '\n' + line;
 
                         //Console.WriteLine(line);
                     }
